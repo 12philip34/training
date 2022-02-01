@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>api</title>
+</head>
+<body class="body">
+<div id="container">
+    <div id="http">Relied upon by more than 11 million developers worldwide,
+        npm is committed to making JavaScript development elegant,
+        productive, and safe. The free npm Registry has become the
+        center of JavaScript code sharing, and with more than one million packages,
+        the largest software registry in the world. Our other tools and services
+        take the Registry, and the work you do around it, to the next level.
+    </div>
+
+    <!--   The Ul goes here     -->
+</div>
+<style>
+    #http{
+     color: black;
+        background-color: lightblue;
+        font-size: 2em;
+    }
+    .body{
+        margin: auto 30%;
+
+    }
+
+    #container{
+        background-color: gray;
+      padding: 2em;
+        border-top-left-radius: 4em;
+        border-top-right-radius: 4em;
+        border-top: 2em solid black;
+        border-left: 3px groove blue;
+        border-right: 3px groove blue;
+        border-bottom: 1em groove black;
+       overflow: scroll;
+        overflow-scrolling: touch;
+        height: 80vh;
+    }
+</style>
+
+<script>
+
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(result => formatTodos(result))
+
+    let ul = '<ul>'
+    function formatTodos(data) {
+        data.forEach((item) => {
+
+
+
+
+            if (item.completed) {
+                ul += `<li class="${item.completed ? 'strike': ''}">
+                ID: ${item.id} <br>
+                Title: ${item.title} <br>
+                albumId:${item.albumId} <br>
+                userId:${item.userId} <br>
+                Completed: ${item.completed ? 'YES' : 'NO'}
+                </li>`
+            }
+
+        })
+
+        ul += '</ul>'
+
+        document.getElementById('container').innerHTML = ul
+
+
+    }
+
+</script>
+
+
+</body>
+</html>
